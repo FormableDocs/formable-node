@@ -1,0 +1,43 @@
+{
+  "name": "formable-node",
+  "version": "0.1.0",
+  "description": "Official Node.js SDK for the Formable API",
+  "license": "MIT",
+  "author": "Formable",
+  "homepage": "https://www.formabledocs.com",
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm run build"
+  },
+  "keywords": [
+    "formable",
+    "esignature",
+    "redlining",
+    "contracts",
+    "sdk"
+  ],
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "tsup": "^8.5.1",
+    "typescript": "^5"
+  }
+}
