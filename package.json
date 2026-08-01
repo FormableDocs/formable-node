@@ -1,10 +1,17 @@
 {
   "name": "formable-node",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Official Node.js SDK for the Formable API",
   "license": "MIT",
   "author": "Formable",
   "homepage": "https://www.formabledocs.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FormableDocs/formable-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FormableDocs/formable-node/issues"
+  },
   "sideEffects": false,
   "type": "module",
   "main": "./dist/index.cjs",
