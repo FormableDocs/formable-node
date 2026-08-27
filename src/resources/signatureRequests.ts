@@ -3,9 +3,9 @@ import { HttpClient } from "../http";
 import { toUpdatedSince } from "./shared";
 import {
   CreateSignatureRequestParams,
-  CreateSignatureRequestResponse,
   ListParams,
   SignatureRequest,
+  SignatureRequestListItem,
   SignedEnvelopeResponse,
   SigningUrlResponse,
 } from "../types";
@@ -13,17 +13,17 @@ import {
 export class SignatureRequests {
   constructor(private readonly http: HttpClient) {}
 
-  create = (
-    params: CreateSignatureRequestParams
-  ): Promise<CreateSignatureRequestResponse> =>
+  create = (params: CreateSignatureRequestParams): Promise<SignatureRequest> =>
     this.http.post("/signature-requests", params);
 
   createEmbedded = (
     params: CreateSignatureRequestParams
-  ): Promise<CreateSignatureRequestResponse> =>
+  ): Promise<SignatureRequest> =>
     this.http.post("/signature-requests/embedded", params);
 
-  list = ({ updatedSince }: ListParams = {}): Promise<SignatureRequest[]> =>
+  list = ({
+    updatedSince,
+  }: ListParams = {}): Promise<SignatureRequestListItem[]> =>
     this.http.get("/signature-requests", {
       updatedSince: toUpdatedSince(updatedSince),
     });

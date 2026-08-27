@@ -59,16 +59,41 @@ export interface SignatureRequestSigner extends Party {
   recipientSignatureId: string;
 }
 
-export interface CreateSignatureRequestResponse {
+export type SignatureRequestFieldType =
+  | "text"
+  | "paragraph"
+  | "checkbox"
+  | "date"
+  | "amount"
+  | "dropdown"
+  | "signature";
+
+export interface SignatureRequestField {
+  fieldId: string;
+  type: SignatureRequestFieldType;
+  required: boolean;
+  filled: boolean;
+  recipientSignatureId: string | null;
+  value: string | boolean | number | null;
+  label?: string;
+  role?: string;
+  unit?: string;
+  signedAt?: string;
+}
+
+export interface SignatureRequest {
   signatureRequestId: string;
   templateId: string;
   signers: SignatureRequestSigner[];
   sender: Party;
   status: SignatureRequestStatus;
   testMode: boolean;
+  fields: SignatureRequestField[];
 }
 
-export interface SignatureRequest {
+export type CreateSignatureRequestResponse = SignatureRequest;
+
+export interface SignatureRequestListItem {
   signatureRequestId: string;
   templateId: string;
   signer: Party;
