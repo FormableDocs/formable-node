@@ -142,3 +142,5 @@ bun install
 bun run typecheck
 bun run build
 ```
+
+To publish a new version, see [RELEASING.md](RELEASING.md).
